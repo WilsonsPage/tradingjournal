@@ -36,3 +36,19 @@ button {
   float: right;
   cursor: pointer;
 }
+table {
+  table-layout: fixed;    /* Fix column widths */
+  width: 100%;
+  word-wrap: break-word;  /* Wrap text */
+}
+
+th, td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+th:last-child, td:last-child {
+  width: 100px;          /* Give “Actions” column fixed width */
+  white-space: normal;   /* Allow buttons to wrap if needed */
+}
