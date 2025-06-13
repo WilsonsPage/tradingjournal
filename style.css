@@ -2,20 +2,48 @@ body {
   font-family: sans-serif;
   margin: 20px;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;    /* Fix column widths */
+  word-wrap: break-word;  /* Wrap text */
 }
+
 th, td {
   border: 1px solid #ddd;
   padding: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 th {
   background: #f4f4f4;
 }
+
+th:last-child, td:last-child {
+  width: 160px;          /* Wider for two buttons */
+  white-space: nowrap;   /* Keep buttons on one line */
+}
+
 button {
   padding: 5px 10px;
+  margin-right: 5px;
+  font-size: 0.9em;
+  cursor: pointer;
 }
+
+button:last-child {
+  color: white;
+  background-color: red;
+  border: none;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
 .modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -24,31 +52,18 @@ button {
   justify-content: center;
   align-items: center;
 }
+
 .modal-content {
   background: white;
   padding: 20px;
   width: 300px;
 }
+
 .hidden {
   display: none;
 }
+
 #closeModal {
   float: right;
   cursor: pointer;
-}
-table {
-  table-layout: fixed;    /* Fix column widths */
-  width: 100%;
-  word-wrap: break-word;  /* Wrap text */
-}
-
-th, td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-th:last-child, td:last-child {
-  width: 100px;          /* Give “Actions” column fixed width */
-  white-space: normal;   /* Allow buttons to wrap if needed */
 }
