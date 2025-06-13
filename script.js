@@ -26,7 +26,10 @@ function renderTrades() {
       <td>${trade.notes}</td>
       <td>${trade.beforeSS || ''}</td>
       <td>${trade.afterSS || ''}</td>
-      <td><button onclick="editTrade(${index})">Edit</button></td>
+      <td>
+        <button onclick="editTrade(${index})">Edit</button>
+        <button onclick="removeTrade(${index})" style="margin-left:5px; color: red;">Remove</button>
+      </td>
     `;
     tradeTable.appendChild(row);
   });
@@ -76,27 +79,6 @@ window.editTrade = (index) => {
   modal.classList.remove("hidden");
 };
 
-renderTrades();
-row.innerHTML = `
-  <td>${trade.pair}</td>
-  <td>${trade.buySell}</td>
-  <td>${trade.result}</td>
-  <td>${trade.unrealized}</td>
-  <td>${trade.drawdown}</td>
-  <td>${trade.keyLevel}</td>
-  <td>${trade.timeframe}</td>
-  <td>${trade.date}</td>
-  <td>${trade.day}</td>
-  <td>${trade.atr}</td>
-  <td>${trade.session}</td>
-  <td>${trade.notes}</td>
-  <td>${trade.beforeSS || ''}</td>
-  <td>${trade.afterSS || ''}</td>
-  <td>
-    <button onclick="editTrade(${index})">Edit</button>
-    <button onclick="removeTrade(${index})" style="margin-left:5px; color: red;">Remove</button>
-  </td>
-`;
 window.removeTrade = (index) => {
   if (confirm("Delete this trade?")) {
     trades.splice(index, 1);
@@ -105,3 +87,4 @@ window.removeTrade = (index) => {
   }
 };
 
+renderTrades();
