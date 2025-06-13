@@ -5,6 +5,7 @@ const tradeForm = document.getElementById("tradeForm");
 const tradeTable = document.querySelector("#tradeTable tbody");
 
 let trades = JSON.parse(localStorage.getItem("trades")) || [];
+let editingIndex = null;
 
 function renderTrades() {
   tradeTable.innerHTML = "";
@@ -35,17 +36,29 @@ function saveTrades() {
   localStorage.setItem("trades", JSON.stringify(trades));
 }
 
-addTradeBtn.onclick = () => modal.classList.remove("hidden");
+addTradeBtn.onclick = () => {
+  editingIndex = null;
+  tradeForm.reset();
+  modal.classList.remove("hidden");
+};
+
 closeModal.onclick = () => modal.classList.add("hidden");
 
 tradeForm.onsubmit = (e) => {
   e.preventDefault();
   const formData = new FormData(tradeForm);
-  const newTrade = {};
+  const tradeData = {};
   formData.forEach((value, key) => {
-    newTrade[key] = value;
+    tradeData[key] = value;
   });
-  trades.push(newTrade);
+
+  if (editingIndex !== null) {
+    trades[editingIndex] = tradeData;
+    editingIndex = null;
+  } else {
+    trades.push(tradeData);
+  }
+
   saveTrades();
   renderTrades();
   modal.classList.add("hidden");
@@ -59,34 +72,8 @@ window.editTrade = (index) => {
       tradeForm[key].value = trade[key];
     }
   }
+  editingIndex = index;
   modal.classList.remove("hidden");
-  tradeForm.onsubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(tradeForm);
-    formData.forEach((value, key) => {
-      trade[key] = value;
-    });
-    saveTrades();
-    renderTrades();
-    modal.classList.add("hidden");
-    tradeForm.reset();
-    tradeForm.onsubmit = defaultSubmit; // reset to default after edit
-  };
 };
-
-function defaultSubmit(e) {
-  e.preventDefault();
-  const formData = new FormData(tradeForm);
-  const newTrade = {};
-  formData.forEach((value, key) => {
-    newTrade[key] = value;
-  });
-  trades.push(newTrade);
-  saveTrades();
-  renderTrades();
-  modal.classList.add("hidden");
-  tradeForm.reset();
-}
-tradeForm.onsubmit = defaultSubmit;
 
 renderTrades();
