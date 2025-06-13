@@ -1,0 +1,38 @@
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+th {
+  background: #f4f4f4;
+}
+button {
+  padding: 5px 10px;
+}
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 300px;
+}
+.hidden {
+  display: none;
+}
+#closeModal {
+  float: right;
+  cursor: pointer;
+}
