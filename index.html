@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trade Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Trade Tracker</h1>
+  <button id="addTradeBtn">Add Trade</button>
+
+  <table id="tradeTable">
+    <thead>
+      <tr>
+        <th>Pair</th>
+        <th>Buy/Sell</th>
+        <th>Result</th>
+        <th>Unrealized</th>
+        <th>Drawdown</th>
+        <th>Key Level</th>
+        <th>Timeframe</th>
+        <th>Date</th>
+        <th>Day</th>
+        <th>ATR Zone</th>
+        <th>Session</th>
+        <th>Notes</th>
+        <th>Before SS</th>
+        <th>After SS</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <form id="tradeForm">
+        <input type="text" name="pair" placeholder="Pair" />
+        <select name="buySell">
+          <option value="">Buy/Sell</option>
+          <option>Buy</option>
+          <option>Sell</option>
+        </select>
+        <input type="text" name="result" placeholder="Result" />
+        <input type="text" name="unrealized" placeholder="Unrealized gain" />
+        <input type="text" name="drawdown" placeholder="Drawdown" />
+        <input type="text" name="keyLevel" placeholder="Key Level" />
+        <input type="text" name="timeframe" placeholder="Timeframe" />
+        <input type="date" name="date" />
+        <input type="text" name="day" placeholder="Day" />
+        <input type="text" name="atr" placeholder="Inside/Outside ATR" />
+        <input type="text" name="session" placeholder="Session" />
+        <textarea name="notes" placeholder="Notes"></textarea>
+        <input type="file" name="beforeSS" />
+        <input type="file" name="afterSS" />
+        <button type="submit">Save Trade</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
